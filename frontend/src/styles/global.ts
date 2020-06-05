@@ -9,14 +9,17 @@ export default createGlobalStyle`
   }
 
   body {
-    background-color: #191919;
+    background-color: #000;
     color: #f2f2f2;
     -webkit-font-smoothing: antialiased;
   }
 
   body, input, button {
-    font-family: 'Roboto Slab', serif;
-    font-size: 16px;
+    font-family: Teko, serif;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
   }
 
   h1, h1, h3, h4, h5, h6, strong, b {
