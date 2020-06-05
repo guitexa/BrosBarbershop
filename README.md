@@ -40,7 +40,9 @@
 
 ## 📜 About the project
 
-This project is based on App GoBarber proposed by Rocketseat on Bootcamp GoStack. The goal is develop a complete app to barbershops called BrosBarbershop, where providers set the schedules that they will be availables to work, while costumers can choose a provider who wish and to schedule an appointment.
+Project based on app [GoBarber](https://github.com/guitexa/GoBarber) proposed by Rocketseat on Bootcamp GoStack.
+
+This is an app to barbershops called BrosBarbershop, where providers set the schedules that they will be availables to work, while costumers can choose a provider who wish and to schedule an appointment.
 
 ## ⚙️ Install and Usage
 
