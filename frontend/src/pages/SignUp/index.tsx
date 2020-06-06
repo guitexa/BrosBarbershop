@@ -25,9 +25,7 @@ const SignUp: React.FC = () => {
         email: Yup.string()
           .required('E-mail obrigatório')
           .email('Digite um e-mail válido'),
-        password: Yup.string()
-          .required('Senha obrigatória')
-          .min(6, 'Mínimo de 6 dígitos'),
+        password: Yup.string().min(6, 'Senha deve ter no mínimo 6 dígitos'),
       });
 
       await schema.validate(data, {
@@ -45,7 +43,7 @@ const SignUp: React.FC = () => {
       <img src={Logo} alt="BrosBarbershop" />
       <Form ref={formRef} onSubmit={handleSubmit}>
         <Input name="name" icon={FiUser} autoFocus placeholder="Nome" />
-        <Input name="email" type="email" icon={FiMail} placeholder="E-mail" />
+        <Input name="email" icon={FiMail} placeholder="E-mail" />
         <Input
           name="password"
           type="password"

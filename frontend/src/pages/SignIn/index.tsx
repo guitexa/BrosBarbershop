@@ -40,13 +40,7 @@ const SignIn: React.FC = () => {
     <Container>
       <img src={Logo} alt="BrosBarbershop" />
       <Form ref={formRef} onSubmit={handleSubmit}>
-        <Input
-          name="email"
-          type="email"
-          icon={FiMail}
-          autoFocus
-          placeholder="E-mail"
-        />
+        <Input name="email" icon={FiMail} autoFocus placeholder="E-mail" />
         <Input
           name="password"
           type="password"
