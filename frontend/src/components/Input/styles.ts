@@ -2,12 +2,16 @@ import styled from 'styled-components';
 
 interface ContainerProps {
   isFocused: boolean;
+  isFilled: boolean;
+  isErrored: boolean;
 }
 
 export const Container = styled.div<ContainerProps>`
   display: flex;
   align-items: center;
-  border: 1px solid ${({ isFocused }) => (isFocused ? '#f2f2f2' : '#606060')};
+  border: 1px solid
+    ${({ isFocused, isErrored }) =>
+      isFocused ? '#f2f2f2' : isErrored ? '#f0000090' : '#606060'};
   border-radius: 6px;
   margin-top: 40px;
   background-color: #00000040;
@@ -17,7 +21,8 @@ export const Container = styled.div<ContainerProps>`
     ${({ isFocused }) => (isFocused ? '#f2f2f250' : 'transparent')};
 
   svg {
-    color: ${({ isFocused }) => (isFocused ? '#f2f2f2' : '#606060')};
+    color: ${({ isFocused, isFilled }) =>
+      isFocused ? '#f2f2f2' : isFilled ? '#f2f2f2' : '#606060'};
     margin: 16px;
   }
 
@@ -30,7 +35,7 @@ export const Container = styled.div<ContainerProps>`
   }
 
   input {
-    width: 100%;
+    flex: 1;
     padding: 10px 0;
     background-color: transparent;
     text-transform: none;
@@ -42,5 +47,14 @@ export const Container = styled.div<ContainerProps>`
       text-transform: none;
       color: #606060;
     }
+  }
+`;
+
+export const Error = styled.div`
+  height: 20px;
+
+  svg {
+    color: #f0000090;
+    margin: 0 16px 0 0;
   }
 `;
