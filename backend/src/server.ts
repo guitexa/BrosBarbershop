@@ -1,3 +1,4 @@
+import cors from 'cors';
 import 'reflect-metadata';
 
 import express, { Request, Response, NextFunction } from 'express';
@@ -11,6 +12,7 @@ import AppError from './errors/AppError';
 const port = 4356;
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(routes);
 app.use('/files', express.static(uploadConfig.directory));
