@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components';
-import { shade } from 'polished';
 
 import BackgroungImage from '../../assets/bgdark.png';
 
