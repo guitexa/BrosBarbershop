@@ -30,38 +30,8 @@ export const Container = styled.div`
     width: 300px;
   }
 
-  form {
-    width: 330px;
-    display: flex;
-    flex-direction: column;
-
-    a {
-      color: ${shade(0.6, '#f2f2f2')};
-      text-decoration: none;
-      text-align: center;
-      transition: all 0.2s;
-      margin: 10px auto auto auto;
-
-      &:hover {
-        color: #f2f2f2;
-      }
-    }
-  }
-  & > a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  h1 {
     margin-top: 40px;
-    color: ${shade(0.3, '#f2f2f2')};
-    text-decoration: none;
-    transition: all 0.2s;
-
-    &:hover {
-      color: #f2f2f2;
-    }
-
-    svg {
-      margin-right: 16px;
-    }
+    font-size: 80px;
   }
 `;

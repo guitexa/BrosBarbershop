@@ -3,6 +3,7 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { FiMail, FiLock, FiUserPlus } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 import { useToast } from '../../hooks/toast';
 import { useAuth } from '../../hooks/auth';
@@ -55,6 +56,8 @@ const SignIn: React.FC = () => {
           const errors = getValidationErrors(err);
 
           formRef.current?.setErrors(errors);
+
+          return;
         }
 
         addToast({
@@ -81,10 +84,10 @@ const SignIn: React.FC = () => {
         <Button>LOGIN</Button>
         <a href="">Esqueci minha senha</a>
       </Form>
-      <a href="">
+      <Link to="/signup">
         <FiUserPlus size={20} />
         Criar uma conta grátis
-      </a>
+      </Link>
     </Container>
   );
 };
