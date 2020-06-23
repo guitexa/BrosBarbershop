@@ -14,7 +14,7 @@ export const Container = styled(RectButton)`
 
 export const TextButton = styled.Text`
   text-transform: uppercase;
-  color: #222;
+  color: #060505;
   font-size: 25px;
   font-family: 'Teko-Medium';
 `;
