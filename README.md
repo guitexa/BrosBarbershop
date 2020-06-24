@@ -8,6 +8,7 @@
 
 <p align="center">
 <img alt="Project working" src="https://media.giphy.com/media/PnJGQmtE6GAOps8X2F/giphy.gif" style="border-radius:8px;"/>
+<img alt="Project working" src="https://media.giphy.com/media/ekXQ4ufDXInv33UKM0/giphy.gif" style="border-radius:8px;"/>
 </p>
 
 <p align="center">
@@ -60,6 +61,9 @@ yarn dev:server
 
 # Run frontend with Yarn
 yarn start
+
+# Run mobile with Yarn
+yarn android | yarn ios
 ```
 
 ## Author
