@@ -5,7 +5,7 @@ import User from '../entities/User';
 import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 
-class UsersRepository implements IUsersRepository {
+export default class UsersRepository implements IUsersRepository {
   private ormRepository: Repository<User>;
 
   constructor() {
@@ -40,5 +40,3 @@ class UsersRepository implements IUsersRepository {
     return this.ormRepository.save(user);
   }
 }
-
-export default UsersRepository;
