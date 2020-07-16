@@ -9,16 +9,16 @@ import uploadConfig from '@config/upload';
 
 const usersRouter = Router();
 const upload = multer(uploadConfig);
-const createUsersController = new CreateUsersController();
-const updateAvatarController = new UpdateAvatarController();
+const createUsers = new CreateUsersController();
+const updateAvatar = new UpdateAvatarController();
 
-usersRouter.post('/', createUsersController.create);
+usersRouter.post('/', createUsers.create);
 
 usersRouter.patch(
   '/avatar',
   ensureAuth,
   upload.single('avatar'),
-  updateAvatarController.update,
+  updateAvatar.update,
 );
 
 export default usersRouter;
