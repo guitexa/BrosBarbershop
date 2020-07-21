@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>83/83</span>
+                <span class='fraction'>77/77</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">77.01% </span>
+                <span class="strong">76.19% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>67/87</span>
+                <span class='fraction'>64/84</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>83/83</span>
+                <span class='fraction'>77/77</span>
             </div>
         
             
@@ -134,13 +134,7 @@
 <a name='L75'></a><a href='#L75'>75</a>
 <a name='L76'></a><a href='#L76'>76</a>
 <a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L78'></a><a href='#L78'>78</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -180,22 +174,18 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
@@ -216,8 +206,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
@@ -265,20 +253,16 @@ export default class UpdateUserProfileService {
 &nbsp;
     if (name) {
       user.name = name;
-&nbsp;
-      await this.usersRepository.save(user);
     }
 &nbsp;
     if (email) {
       const checkExistentEmail = await this.usersRepository.findByEmail(email);
 &nbsp;
-      if (checkExistentEmail) {
+      if (checkExistentEmail || email === user.email) {
         throw new AppError('This email is already in use');
       }
 &nbsp;
       user.email = email;
-&nbsp;
-      await this.usersRepository.save(user);
     }
 &nbsp;
     if (password &amp;&amp; !old_password) {
@@ -290,8 +274,8 @@ export default class UpdateUserProfileService {
 &nbsp;
     if (password &amp;&amp; old_password) {
       const checkOldPassword = await this.hashProvider.compareHash(
-        user.password,
         old_password,
+        user.password,
       );
 &nbsp;
       if (!checkOldPassword) {
@@ -299,11 +283,9 @@ export default class UpdateUserProfileService {
       }
 &nbsp;
       user.password = await this.hashProvider.generateHash(password);
-&nbsp;
-      await this.usersRepository.save(user);
     }
 &nbsp;
-    return user;
+    return this.usersRepository.save(user);
   }
 }<span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>
 &nbsp;</pre></td></tr></table></pre>
@@ -313,7 +295,7 @@ export default class UpdateUserProfileService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Jul 17 2020 00:36:12 GMT-0300 (GMT-03:00)
+                at Tue Jul 21 2020 01:02:05 GMT-0300 (GMT-03:00)
             </div>
         </div>
         <script src="../../prettify.js"></script>
