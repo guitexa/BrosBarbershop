@@ -55,11 +55,12 @@ export default class FakeAppointmentsRepository
 
   public async create({
     provider_id,
+    user_id,
     date,
   }: ICreateAppointmentDTO): Promise<Appointment> {
     const appointment = new Appointment();
 
-    Object.assign(appointment, { id: uuid(), date, provider_id });
+    Object.assign(appointment, { id: uuid(), user_id, date, provider_id });
 
     this.appointmentsRepository.push(appointment);
 
