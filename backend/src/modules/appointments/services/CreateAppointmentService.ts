@@ -44,9 +44,7 @@ export default class CreateAppointmentService {
       throw new AppError('This provider_id not exists');
     }
 
-    const currentDate = new Date(Date.now());
-
-    if (isBefore(appointmentDate, currentDate)) {
+    if (isBefore(appointmentDate, Date.now())) {
       throw new AppError('You cannot schedule an appointment on the past');
     }
 
