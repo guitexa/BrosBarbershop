@@ -2,19 +2,23 @@ import AppError from '@shared/errors/AppError';
 
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentsRepository';
+import FakeNotificationsRepository from '@modules/notifications/repositories/fakes/FakeNotificationsRepository';
 import CreateAppointmentService from './CreateAppointmentService';
 
 let fakeUsersRepository: FakeUsersRepository;
 let fakeAppointmentsRepository: FakeAppointmentsRepository;
+let fakeNotificationsRepository: FakeNotificationsRepository;
 let createAppointment: CreateAppointmentService;
 
 describe('CreateAppointment', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository();
     fakeAppointmentsRepository = new FakeAppointmentsRepository();
+    fakeNotificationsRepository = new FakeNotificationsRepository();
     createAppointment = new CreateAppointmentService(
       fakeAppointmentsRepository,
       fakeUsersRepository,
+      fakeNotificationsRepository,
     );
   });
 
@@ -29,9 +33,15 @@ describe('CreateAppointment', () => {
       password: '123456',
     });
 
+    const user = await fakeUsersRepository.create({
+      name: 'Jane Doe',
+      email: 'janedoe@brosbarbershop.com',
+      password: '123456',
+    });
+
     const appointment = await createAppointment.execute({
       provider_id: provider.id,
-      user_id: 'user-id',
+      user_id: user.id,
       date: new Date(2020, 4, 21, 10),
     });
 
@@ -49,16 +59,22 @@ describe('CreateAppointment', () => {
       password: '123456',
     });
 
+    const user = await fakeUsersRepository.create({
+      name: 'Jane Doe',
+      email: 'janedoe@brosbarbershop.com',
+      password: '123456',
+    });
+
     await createAppointment.execute({
       provider_id: provider.id,
-      user_id: 'user-id',
+      user_id: user.id,
       date: new Date(2020, 4, 21, 10),
     });
 
     await expect(
       createAppointment.execute({
         provider_id: provider.id,
-        user_id: 'user-id',
+        user_id: user.id,
         date: new Date(2020, 4, 21, 10),
       }),
     ).rejects.toBeInstanceOf(AppError);
@@ -69,10 +85,36 @@ describe('CreateAppointment', () => {
       return new Date(2020, 4, 20).getTime();
     });
 
+    const user = await fakeUsersRepository.create({
+      name: 'Jane Doe',
+      email: 'janedoe@brosbarbershop.com',
+      password: '123456',
+    });
+
     await expect(
       createAppointment.execute({
-        provider_id: 'provider-id',
-        user_id: 'user-id',
+        provider_id: 'inexistent-provider',
+        user_id: user.id,
+        date: new Date(2020, 4, 21, 10),
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
+  it('should NOT be able to create a new appointment for an inexistent user', async () => {
+    jest.spyOn(Date, 'now').mockImplementationOnce(() => {
+      return new Date(2020, 4, 20).getTime();
+    });
+
+    const provider = await fakeUsersRepository.create({
+      name: 'John Doe',
+      email: 'johndoe@brosbarbershop.com',
+      password: '123456',
+    });
+
+    await expect(
+      createAppointment.execute({
+        provider_id: provider.id,
+        user_id: 'inexistent-user',
         date: new Date(2020, 4, 21, 10),
       }),
     ).rejects.toBeInstanceOf(AppError);
@@ -89,10 +131,16 @@ describe('CreateAppointment', () => {
       password: '123456',
     });
 
+    const user = await fakeUsersRepository.create({
+      name: 'Jane Doe',
+      email: 'janedoe@brosbarbershop.com',
+      password: '123456',
+    });
+
     await expect(
       createAppointment.execute({
         provider_id: provider.id,
-        user_id: 'user-id',
+        user_id: user.id,
         date: new Date(2020, 4, 19, 10),
       }),
     ).rejects.toBeInstanceOf(AppError);
@@ -109,10 +157,24 @@ describe('CreateAppointment', () => {
       password: '123456',
     });
 
+    const user = await fakeUsersRepository.create({
+      name: 'Jane Doe',
+      email: 'janedoe@brosbarbershop.com',
+      password: '123456',
+    });
+
     await expect(
       createAppointment.execute({
         provider_id: provider.id,
         user_id: provider.id,
+        date: new Date(2020, 4, 21, 10),
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+
+    await expect(
+      createAppointment.execute({
+        provider_id: user.id,
+        user_id: user.id,
         date: new Date(2020, 4, 21, 10),
       }),
     ).rejects.toBeInstanceOf(AppError);
@@ -129,10 +191,16 @@ describe('CreateAppointment', () => {
       password: '123456',
     });
 
+    const user = await fakeUsersRepository.create({
+      name: 'Jane Doe',
+      email: 'janedoe@brosbarbershop.com',
+      password: '123456',
+    });
+
     await expect(
       createAppointment.execute({
         provider_id: provider.id,
-        user_id: 'user-id',
+        user_id: user.id,
         date: new Date(2020, 4, 21, 7),
       }),
     ).rejects.toBeInstanceOf(AppError);
@@ -140,7 +208,7 @@ describe('CreateAppointment', () => {
     await expect(
       createAppointment.execute({
         provider_id: provider.id,
-        user_id: 'user-id',
+        user_id: user.id,
         date: new Date(2020, 4, 21, 18),
       }),
     ).rejects.toBeInstanceOf(AppError);

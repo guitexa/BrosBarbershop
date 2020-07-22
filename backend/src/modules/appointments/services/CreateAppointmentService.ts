@@ -1,4 +1,4 @@
-import { startOfHour, isBefore, getHours } from 'date-fns';
+import { startOfHour, isBefore, getHours, format } from 'date-fns';
 import { injectable, inject } from 'tsyringe';
 
 import Appointment from '../infra/typeorm/entities/Appointment';
@@ -6,6 +6,7 @@ import AppError from '@shared/errors/AppError';
 
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
+import INotificationsRepository from '@modules/notifications/repositories/INotificationRepository';
 
 interface IRequest {
   provider_id: string;
@@ -21,6 +22,9 @@ export default class CreateAppointmentService {
 
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
+
+    @inject('NotificationsRepository')
+    private notificationsRepository: INotificationsRepository,
   ) {}
 
   public async execute({
@@ -38,10 +42,16 @@ export default class CreateAppointmentService {
       throw new AppError('This date is not available');
     }
 
-    const checkExistProvider = await this.usersRepository.findByID(provider_id);
+    const provider = await this.usersRepository.findByID(provider_id);
 
-    if (!checkExistProvider) {
+    if (!provider) {
       throw new AppError('This provider_id not exists');
+    }
+
+    const user = await this.usersRepository.findByID(user_id);
+
+    if (!user) {
+      throw new AppError('This user_id not exists');
     }
 
     if (isBefore(appointmentDate, Date.now())) {
@@ -62,6 +72,13 @@ export default class CreateAppointmentService {
       provider_id,
       user_id,
       date: appointmentDate,
+    });
+
+    const formattedDate = format(appointmentDate, "dd/MM/yyyy 'às' HH'h'");
+
+    await this.notificationsRepository.create({
+      recipient_id: provider.id,
+      content: `O usuário ${user.name} realizou um agendamento dia ${formattedDate}`,
     });
 
     return appointment;
