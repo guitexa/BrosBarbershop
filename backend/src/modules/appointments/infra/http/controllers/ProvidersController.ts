@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { classToClass } from 'class-transformer';
 
 import ListProvidersService from '@modules/appointments/services/ListProvidersService';
 
@@ -11,8 +12,6 @@ export default class ProvidersController {
       user_id: req.user.id,
     });
 
-    providers.forEach(provider => delete provider.password);
-
-    return res.json(providers);
+    return res.json(classToClass(providers));
   }
 }
