@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 
 import { Container } from './styles';
 
-const Button: React.FC = ({ children }) => {
-  return <Container>{children}</Container>;
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  loading?: boolean;
+};
+
+const Button: React.FC<ButtonProps> = ({ children, loading, ...rest }) => {
+  return (
+    <Container
+      loading={Number(loading)}
+      type="submit"
+      disabled={loading}
+      {...rest}
+    >
+      {loading ? 'Enviando e-mail...' : children}
+    </Container>
+  );
 };
 
 export default Button;
