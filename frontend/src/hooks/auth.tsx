@@ -1,9 +1,16 @@
 import React, { createContext, useContext, useCallback, useState } from 'react';
 import api from '../services/api';
 
+interface User {
+  id: string;
+  avatar_url: string;
+  email: string;
+  name: string;
+}
+
 interface AuthState {
   token: string;
-  user: object;
+  user: User;
 }
 
 interface SignInCredentials {
@@ -12,7 +19,7 @@ interface SignInCredentials {
 }
 
 interface AuthContextData {
-  user: object;
+  user: User;
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
 }
@@ -26,6 +33,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     const user = localStorage.getItem('@BrosBarber: user');
 
     if (token && user) {
+      api.defaults.headers.authorization = `Bearer: ${token}`;
+
       return { token, user: JSON.parse(user) };
     }
 
@@ -44,6 +53,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     // Armazenar token e user no localStorage
     localStorage.setItem('@BrosBarber: token', token);
     localStorage.setItem('@BrosBarber: user', JSON.stringify(user));
+
+    api.defaults.headers.authorization = `Bearer: ${token}`;
 
     setData({ token, user });
   }, []);
