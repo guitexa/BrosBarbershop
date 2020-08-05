@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 
-import BackgroungImage from '../../assets/bgdark.png';
+import BackgroundImage from '../../assets/bgdark.png';
 
 const transitionEffect = keyframes`
   from {
@@ -17,14 +17,19 @@ const transitionEffect = keyframes`
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
+  background: url(${BackgroundImage}) no-repeat center fixed;
+  min-height: 100vh;
+`;
+
+export const ContentEffect = styled.div`
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   animation: ${transitionEffect} 1s;
-
-  background: url(${BackgroungImage}) no-repeat center;
 
   img {
     width: 300px;

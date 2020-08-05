@@ -13,7 +13,7 @@ import Logo from '../../assets/logo.png';
 
 import getValidationErrors from '../../utils/getValidationErrors';
 
-import { Container } from './styles';
+import { Container, ContentEffect } from './styles';
 import api from '../../services/api';
 
 interface ForgotPasswordCredentials {
@@ -76,15 +76,17 @@ const ForgotPassword: React.FC = () => {
 
   return (
     <Container>
-      <img src={Logo} alt="BrosBarbershop" />
-      <Form ref={formRef} onSubmit={handleSubmit}>
-        <Input name="email" icon={FiMail} autoFocus placeholder="E-mail" />
-        <Button loading={loading}>RECUPERAR</Button>
-      </Form>
-      <Link to="/">
-        <MdKeyboardBackspace size={25} />
-        Voltar para página de login
-      </Link>
+      <ContentEffect>
+        <img src={Logo} alt="BrosBarbershop" />
+        <Form ref={formRef} onSubmit={handleSubmit}>
+          <Input name="email" icon={FiMail} autoFocus placeholder="E-mail" />
+          <Button loading={loading}>RECUPERAR</Button>
+        </Form>
+        <Link to="/">
+          <MdKeyboardBackspace size={25} />
+          Voltar para página de login
+        </Link>
+      </ContentEffect>
     </Container>
   );
 };

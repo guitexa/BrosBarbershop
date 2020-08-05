@@ -14,7 +14,7 @@ import Logo from '../../assets/logo.png';
 
 import getValidationErrors from '../../utils/getValidationErrors';
 
-import { Container } from './styles';
+import { Container, ContentEffect } from './styles';
 
 interface DataForm {
   name: string;
@@ -74,22 +74,24 @@ const SignUp: React.FC = () => {
 
   return (
     <Container>
-      <img src={Logo} alt="BrosBarbershop" />
-      <Form ref={formRef} onSubmit={handleSubmit}>
-        <Input name="name" icon={FiUser} autoFocus placeholder="Nome" />
-        <Input name="email" icon={FiMail} placeholder="E-mail" />
-        <Input
-          name="password"
-          type="password"
-          icon={FiLock}
-          placeholder="Senha"
-        />
-        <Button>CRIAR CONTA GRÁTIS</Button>
-      </Form>
-      <Link to="/">
-        <MdKeyboardBackspace size={25} />
-        Voltar para página de login
-      </Link>
+      <ContentEffect>
+        <img src={Logo} alt="BrosBarbershop" />
+        <Form ref={formRef} onSubmit={handleSubmit}>
+          <Input name="name" icon={FiUser} autoFocus placeholder="Nome" />
+          <Input name="email" icon={FiMail} placeholder="E-mail" />
+          <Input
+            name="password"
+            type="password"
+            icon={FiLock}
+            placeholder="Senha"
+          />
+          <Button>CRIAR CONTA GRÁTIS</Button>
+        </Form>
+        <Link to="/">
+          <MdKeyboardBackspace size={25} />
+          Voltar para página de login
+        </Link>
+      </ContentEffect>
     </Container>
   );
 };

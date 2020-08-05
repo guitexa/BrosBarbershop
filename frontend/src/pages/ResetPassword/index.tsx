@@ -13,7 +13,7 @@ import Logo from '../../assets/logo.png';
 
 import getValidationErrors from '../../utils/getValidationErrors';
 
-import { Container } from './styles';
+import { Container, ContentEffect } from './styles';
 
 interface ResetPasswordCredentials {
   password: string;
@@ -86,23 +86,25 @@ const ResetPassword: React.FC = () => {
 
   return (
     <Container>
-      <img src={Logo} alt="BrosBarbershop" />
-      <Form ref={formRef} onSubmit={handleSubmit}>
-        <Input
-          name="password"
-          type="password"
-          icon={FiLock}
-          autoFocus
-          placeholder="Nova senha"
-        />
-        <Input
-          name="password_confirmation"
-          type="password"
-          icon={FiLock}
-          placeholder="Redigite a senha"
-        />
-        <Button>RESETAR SENHA</Button>
-      </Form>
+      <ContentEffect>
+        <img src={Logo} alt="BrosBarbershop" />
+        <Form ref={formRef} onSubmit={handleSubmit}>
+          <Input
+            name="password"
+            type="password"
+            icon={FiLock}
+            autoFocus
+            placeholder="Nova senha"
+          />
+          <Input
+            name="password_confirmation"
+            type="password"
+            icon={FiLock}
+            placeholder="Redigite a senha"
+          />
+          <Button>RESETAR SENHA</Button>
+        </Form>
+      </ContentEffect>
     </Container>
   );
 };

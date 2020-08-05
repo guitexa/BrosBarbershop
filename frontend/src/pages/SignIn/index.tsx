@@ -13,7 +13,7 @@ import Logo from '../../assets/logo.png';
 
 import getValidationErrors from '../../utils/getValidationErrors';
 
-import { Container } from './styles';
+import { Container, ContentEffect } from './styles';
 
 interface SignInCredentials {
   email: string;
@@ -72,22 +72,24 @@ const SignIn: React.FC = () => {
 
   return (
     <Container>
-      <img src={Logo} alt="BrosBarbershop" />
-      <Form ref={formRef} onSubmit={handleSubmit}>
-        <Input name="email" icon={FiMail} autoFocus placeholder="E-mail" />
-        <Input
-          name="password"
-          type="password"
-          icon={FiLock}
-          placeholder="Senha"
-        />
-        <Button>LOGIN</Button>
-        <Link to="/forgot-password">Esqueci minha senha</Link>
-      </Form>
-      <Link to="/signup">
-        <FiUserPlus size={20} />
-        Criar uma conta grátis
-      </Link>
+      <ContentEffect>
+        <img src={Logo} alt="BrosBarbershop" />
+        <Form ref={formRef} onSubmit={handleSubmit}>
+          <Input name="email" icon={FiMail} autoFocus placeholder="E-mail" />
+          <Input
+            name="password"
+            type="password"
+            icon={FiLock}
+            placeholder="Senha"
+          />
+          <Button>LOGIN</Button>
+          <Link to="/forgot-password">Esqueci minha senha</Link>
+        </Form>
+        <Link to="/signup">
+          <FiUserPlus size={20} />
+          Criar uma conta grátis
+        </Link>
+      </ContentEffect>
     </Container>
   );
 };
