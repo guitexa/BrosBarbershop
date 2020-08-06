@@ -45,7 +45,7 @@ export default class UpdateUserProfileService {
     if (email) {
       const checkExistentEmail = await this.usersRepository.findByEmail(email);
 
-      if (checkExistentEmail || email === user.email) {
+      if (checkExistentEmail && email !== user.email) {
         throw new AppError('This email is already in use');
       }
 
