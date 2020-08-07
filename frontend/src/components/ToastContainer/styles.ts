@@ -8,4 +8,5 @@ export const Container = styled.div`
   top: 18px;
   right: 0;
   text-align: right;
+  z-index: 9999;
 `;

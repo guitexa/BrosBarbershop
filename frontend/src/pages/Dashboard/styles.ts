@@ -19,7 +19,7 @@ export const Header = styled.div`
   background: rgba(0, 0, 0, 0.95);
   position: fixed;
   top: 0;
-  z-index: 9999;
+  z-index: 99;
 `;
 
 export const HeaderContent = styled.div`
