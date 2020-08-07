@@ -29,6 +29,7 @@ import {
   Calendar,
 } from './styles';
 import api from '../../services/api';
+import { Link } from 'react-router-dom';
 
 interface MonthAvailability {
   day: number;
@@ -178,7 +179,7 @@ const Dashboard: React.FC = () => {
             <img src={user.avatar_url} alt={user.name} />
             <div>
               <span>Bem vindo,</span>
-              <span>{user.name}</span>
+              <Link to="/profile">{user.name}</Link>
             </div>
           </Profile>
           <button type="button" onClick={signOut}>

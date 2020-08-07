@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { shade } from 'polished';
 
 import BackgroundImage from '../../assets/bgdark.png';
 
@@ -76,10 +75,15 @@ export const Profile = styled.div`
       font-weight: 300;
       color: #ccc;
     }
-    span:nth-child(2) {
+    a {
       font-size: 25px;
       color: #f2f2f2;
       margin-top: 3px;
+      text-decoration: none;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 `;
