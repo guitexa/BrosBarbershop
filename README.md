@@ -8,6 +8,9 @@
 
 <p align="center">
 <img alt="Project working" src="https://media.giphy.com/media/PnJGQmtE6GAOps8X2F/giphy.gif" style="border-radius:8px;"/>
+<br/>
+<img alt="Project working" src="https://media.giphy.com/media/jtEgxzODOVOLQB395i/giphy.gif" style="border-radius:8px;"/>
+<br/>
 <img alt="Project working" src="https://media.giphy.com/media/ekXQ4ufDXInv33UKM0/giphy.gif" style="border-radius:8px;"/>
 </p>
 
