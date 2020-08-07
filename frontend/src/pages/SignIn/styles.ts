@@ -6,7 +6,7 @@ import BackgroundImage from '../../assets/bgdark.png';
 const transitionEffect = keyframes`
   from {
     opacity: 0;
-    transform: translateY(-50px);
+    transform: translateY(50px);
   }
   to {
     opacity: 1;
@@ -16,14 +16,15 @@ const transitionEffect = keyframes`
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
   background: url(${BackgroundImage}) no-repeat center fixed;
-  min-height: 100vh;s
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ContentEffect = styled.div`
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

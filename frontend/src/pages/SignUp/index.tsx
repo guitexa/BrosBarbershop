@@ -16,7 +16,7 @@ import getValidationErrors from '../../utils/getValidationErrors';
 
 import { Container, ContentEffect } from './styles';
 
-interface DataForm {
+interface SignUpCredentials {
   name: string;
   email: string;
   password: string;
@@ -29,7 +29,7 @@ const SignUp: React.FC = () => {
   const history = useHistory();
 
   const handleSubmit = useCallback(
-    async (data: DataForm) => {
+    async (data: SignUpCredentials) => {
       try {
         formRef.current?.setErrors({});
 
