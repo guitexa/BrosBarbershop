@@ -2,19 +2,23 @@ import AppError from '@shared/errors/AppError';
 
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
+import FakeCacheProvider from '@shared/container/providers/CacheProvider/fakes/FakeCacheProvider';
 import UpdateUserProfileService from './UpdateUserProfileService';
 
 let fakeUsersRepository: FakeUsersRepository;
 let fakeHashProvider: FakeHashProvider;
+let fakeCacheProvider: FakeCacheProvider;
 let updateUserProfile: UpdateUserProfileService;
 
 describe('UpdateUserProfile', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository();
     fakeHashProvider = new FakeHashProvider();
+    fakeCacheProvider = new FakeCacheProvider();
     updateUserProfile = new UpdateUserProfileService(
       fakeUsersRepository,
       fakeHashProvider,
+      fakeCacheProvider,
     );
   });
 
