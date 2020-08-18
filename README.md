@@ -7,16 +7,15 @@
 </h3>
 
 <p align="center">
-<img alt="Project working" src="https://media.giphy.com/media/PnJGQmtE6GAOps8X2F/giphy.gif" style="border-radius:8px;"/>
 <br/>
 <img alt="Project working" src="https://media.giphy.com/media/jtEgxzODOVOLQB395i/giphy.gif" style="border-radius:8px;"/>
 <br/>
-<img alt="Project working" src="https://media.giphy.com/media/ekXQ4ufDXInv33UKM0/giphy.gif" style="border-radius:8px;"/>
+<img alt="Project working" src="https://media.giphy.com/media/fSY1NH1Eug6rczxBnf/giphy.gif" style="border-radius:8px;"/>
 </p>
 
 <p align="center">
-  <img alt="Languagues" src="https://img.shields.io/github/languages/count/guitexa/GoBarber">
-  <img alt="Top Languague" src="https://img.shields.io/github/languages/top/guitexa/GoBarber">
+  <img alt="Languages" src="https://img.shields.io/github/languages/count/guitexa/GoBarber">
+  <img alt="Top Language" src="https://img.shields.io/github/languages/top/guitexa/GoBarber">
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/guitexa/GoBarber">
   <a href="https://github.com/guitexa/GoBarber/commits/master">
     <img alt="Last commit date" src="https://img.shields.io/github/last-commit/guitexa/GoBarber">
@@ -36,7 +35,7 @@
     <img alt="Github - Guilherme Teixeira" src="https://img.shields.io/badge/Github--%23F8952D?style=social&logo=github">
   </a>
   <a href="https://www.linkedin.com/in/guitexa/" target="_blank" >
-    <img alt="Linkedin - Guilherme Teixeira" src="https://img.shields.io/badge/Linkedin--%23F8952D?style=social&logo=linkedin">
+    <img alt="LinkedIn - Guilherme Teixeira" src="https://img.shields.io/badge/Linkedin--%23F8952D?style=social&logo=linkedin">
   </a>
   <a href="mailto:guilhermetexa@outlook.com" target="_blank" >
     <img alt="Email - Guilherme Teixeira" src="https://img.shields.io/badge/Email--%23F8952D?style=social&logo=gmail">
@@ -48,7 +47,7 @@
 
 Project based on app [GoBarber](https://github.com/guitexa/GoBarber) proposed by Rocketseat on Bootcamp GoStack.
 
-This is an app to barbershops called BrosBarbershop, where providers set the schedules that they will be availables to work, while costumers can choose a provider who wish and to schedule an appointment.
+This is an app to barbershops called BrosBarbershop, where providers set the schedules that they will be available to work, while costumers can choose a provider who wish and to schedule an appointment.
 
 ## ⚙️ Install and Usage
 
