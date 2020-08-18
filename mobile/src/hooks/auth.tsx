@@ -83,9 +83,17 @@ export const AuthProvider: React.FC = ({ children }) => {
     setData({} as AuthState);
   }, []);
 
-  const updateUser = useCallback(async (user: User) => {
-    await AsyncStorage.setItem('@BrosBarber: user', JSON.stringify(user));
-  }, []);
+  const updateUser = useCallback(
+    async (user: User) => {
+      setData({
+        token: data.token,
+        user,
+      });
+
+      await AsyncStorage.setItem('@BrosBarber: user', JSON.stringify(user));
+    },
+    [data.token]
+  );
 
   return (
     <AuthContext.Provider
