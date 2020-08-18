@@ -5,6 +5,7 @@ import { useField } from '@unform/core';
 interface InputProps extends TextInputProps {
   name: string;
   icon: string;
+  styled?: {};
 }
 
 interface InputValueReference {
@@ -13,7 +14,7 @@ interface InputValueReference {
 
 import { Container, Icon, TextInput } from './styles';
 
-const Input: React.FC<InputProps> = ({ name, icon, ...rest }) => {
+const Input: React.FC<InputProps> = ({ name, icon, styled = {}, ...rest }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
 
@@ -49,7 +50,7 @@ const Input: React.FC<InputProps> = ({ name, icon, ...rest }) => {
   }, [registerField, fieldName]);
 
   return (
-    <Container isFocused={isFocused} isErrored={!!error}>
+    <Container style={styled} isFocused={isFocused} isErrored={!!error}>
       <Icon
         name={icon}
         size={20}
