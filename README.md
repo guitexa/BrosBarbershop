@@ -68,13 +68,6 @@ yarn start
 yarn android | yarn ios
 ```
 
-## Author
-
-🙋🏻‍♂️ **Guilherme Teixeira**
-
-[![github](http://ap.imagensbrasil.org/images/2018/12/10/github-logo-1.png) ](https://github.com/guitexa)
-[![linkedin](http://ap.imagensbrasil.org/images/2018/12/10/linkedin-1.png)](https://www.linkedin.com/in/guitexa/)
-
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/guitexa/gobarber/issues).
